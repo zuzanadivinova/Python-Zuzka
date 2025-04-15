@@ -1,0 +1,2 @@
+print ("treti soubor")
+print
