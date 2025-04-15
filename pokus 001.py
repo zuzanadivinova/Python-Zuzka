@@ -27,6 +27,7 @@ print(cara)
 print("Děkuju " + jmeno + " za objednávku.")
 print("Cíl destinace: " + spravna_destinace + " ,cena jizdného:" + str(cena))
 print("Na tvůj email" + email + " jsme ti poslali lístek!")
+print()
 
 
 
