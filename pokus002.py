@@ -1,3 +1,5 @@
+
+print ("ahoj")
 print
 print
-print
+print ("novy radek")
