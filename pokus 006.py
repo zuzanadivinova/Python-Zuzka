@@ -1,9 +1,3 @@
-"""
-projekt_1.py: první projekt do Engeto Online Python Akademie
-
-author: Zuzana Divínová
-email: zuzana.divinova@gmail.com
-"""
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -38,27 +32,45 @@ user = {
     "liz": "pass123"
 }
 separator = ("-"*50)
+
 user_name = input("Username: ")
 pass_word = input("Password: ")
 print(separator)
 
-if user.get(user_name) == pass_word:
-  print(f"Welcome to the app, {user_name}.\nWe have 3 texts to be analyzed.")
-  print(separator)
+if not user.get(user_name) == pass_word:
+    print("Unregistered user, terminating the program..")
+    exit() 
+else:   
+    print(f"Welcome to the app, {user_name}.\nWe have 3 texts to be analyzed.")
+    print(separator)
 
-  number = input("Enter a number btw. 1 and 3 to select: ")
-  print(separator)
+    number = input("Enter a number btw. 1 and 3 to select: ")
+    print(separator)
 
-  if number.isdigit() and 1 <= int(number) <= 3:
+    if not number.isdigit() or not 1 <= int(number) <= 3:
+        print("Invalid number, terminating the program..")
+        exit()
+    
     selected_text = TEXTS[int(number) - 1]
     words = selected_text.split()
     clean_words = [word.strip(".,") for word in words] 
 
-    title_words = [word for word in words if word.istitle()]
-    upper_words = [word for word in words if word.isupper()]
-    lower_words = [word for word in words if word.islower()]
-    numeric_words = [word for word in words if word.isnumeric()]
-    numeric_sum = sum(int(word) for word in numeric_words)
+    title_words = []
+    upper_words = []
+    lower_words = []
+    numeric_words = []
+    numeric_sum = 0
+
+    for word in words:
+        if word.istitle():        
+            title_words.append(word)
+        elif word.isupper():
+            upper_words.append(word)
+        elif word.islower():
+            lower_words.append(word)
+        elif word.isnumeric():
+            numeric_words.append(word)
+            numeric_sum += int(word)
 
     print(f"There are {len(words)} words in the selected text.")
     print(f"There are {len(title_words)} titlecase words.")
@@ -68,8 +80,7 @@ if user.get(user_name) == pass_word:
     print(f"The sum of all the numbers is {numeric_sum}.")
     print(separator)
 
-    summary = ("LEN|    OCCURENCES      |NR.") 
-    print(summary)
+    print("LEN|    OCCURENCES      |NR.") 
     print(separator)
 
     word_lengths = {}
@@ -83,10 +94,3 @@ if user.get(user_name) == pass_word:
     for length in sorted(word_lengths):
         count = word_lengths[length]
         print(f"{length:>3}|{'*' * count:<20}|{count}")
-
-  else:
-    print("Number is not correct, terminating the program..")
-    exit()
-else:
-  print("Unregistered user, terminating the program..")
-  exit()
