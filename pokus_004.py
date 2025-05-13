@@ -52,7 +52,6 @@ if user.get(user_name) == pass_word:
   if number.isdigit() and 1 <= int(number) <= 3:
     selected_text = TEXTS[int(number) - 1]
     words = selected_text.split()
-    clean_words = [word.strip(".,") for word in words] 
 
     title_words = [word for word in words if word.istitle()]
     upper_words = [word for word in words if word.isupper()]
@@ -83,10 +82,19 @@ if user.get(user_name) == pass_word:
     for length in sorted(word_lengths):
         count = word_lengths[length]
         print(f"{length:>3}|{'*' * count:<20}|{count}")
-
+    print(separator)
   else:
-    print("Number is not correct, terminating the program..")
+    print("Invalid number, terminating the program..")
     exit()
 else:
   print("Unregistered user, terminating the program..")
   exit()
+
+
+
+
+
+
+
+
+

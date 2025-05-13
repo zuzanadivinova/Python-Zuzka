@@ -94,3 +94,6 @@ else:
     for length in sorted(word_lengths):
         count = word_lengths[length]
         print(f"{length:>3}|{'*' * count:<20}|{count}")
+     
+
+
