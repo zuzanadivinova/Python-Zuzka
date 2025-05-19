@@ -1,3 +1,9 @@
+"""
+projekt_2.py: druhý projekt do Engeto Online Python Akademie
+
+author: Petr Svetr
+email: petr.svetr@gmail.com
+"""
 import random
 
 separator = "-" * 47
@@ -49,12 +55,12 @@ def format_result(bulls, cows):
     """
     bull_word = "bull" if bulls == 1 else "bulls"
     cow_word = "cow" if cows == 1 else "cows"
-    
+
     if bulls == 0:
         bull_word = "bulls"
     if cows == 0:
         cow_word = "cows"
-    
+
     return f"{bulls} {bull_word}, {cows} {cow_word}"
 
 secret_numbers = generate_secret_number()
@@ -69,19 +75,19 @@ while True:
     guess = list(input(">>> "))
 
     if len(guess) != 4:
-        print("Invalid input. Please enter exactly 4 different numbers.")
+        print("Invalid input. \nPlease enter exactly 4 different numbers.")
         print(separator)
-        continue    
+        continue
     elif guess[0] == "0":
-        print("Invalid input. Please enter exactly 4 different numbers. 0 can't be first")
+        print("Invalid input. \nPlease enter exactly 4 different numbers. \n0 can't be first.")
         print(separator)
         continue
     elif len(set(guess)) != 4:
-        print("Invalid input. Please enter exactly 4 different numbers.")
+        print("Invalid input. \nPlease enter exactly 4 different numbers.")
         print(separator)
         continue
     elif not "".join(guess).isdigit():
-        print("Invalid input. Please enter exactly 4 different numbers.")
+        print("Invalid input. \nPlease enter exactly 4 different numbers.")
         print(separator)
         continue
 
@@ -89,8 +95,7 @@ while True:
     bulls, cows = evaluate_guess(secret_numbers, list(guess))
 
     if bulls == 4:
-        print(f"Correct, you've guessed the right number")
-        print(f"in {guess_count} guesses!")
+        print(f"Correct, you've guessed the right number \nin {guess_count} guesses!")
         print(separator)
         print("That's amazing!")
         break
